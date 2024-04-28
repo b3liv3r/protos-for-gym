@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package wallet;
+
+option go_package = "gym.wallet.v1;walletv1";
+
+service Wallet {
+  rpc Create (CreateRequest) returns (CreateResponse);
+  rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
+  rpc Transaction (TransactionRequest) returns (TransactionResponse);
+  rpc History (HistoryRequest) returns (HistoryResponse);
+}
+
+message CreateRequest {
+  int64 user_id = 1;
+}
+
+message CreateResponse {
+  string message = 1;
+}
+
+message GetBalanceRequest {
+  int64 user_id = 1;
+}
+
+message GetBalanceResponse {
+  double balance = 1;
+}
+
+message TransactionRequest {
+  double amount = 1;
+  string type = 2;
+  string description = 3;
+}
+
+message TransactionResponse {
+  string message = 1;
+  string balance = 2;
+}
+
+message HistoryRequest {
+  int64 user_id = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+}
+
+message HistoryResponse {
+  repeated Transaction transactions = 1;
+  string message = 2;
+}
+
+message Transaction {
+  string id = 1;
+  string type = 2;
+  double amount = 3;
+  string description = 4;
+  google.protobuf.Timestamp timestamp = 5;
+}
