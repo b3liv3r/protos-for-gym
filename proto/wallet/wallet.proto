@@ -42,8 +42,9 @@ message TransactionResponse {
 
 message HistoryRequest {
   int64 user_id = 1;
-  google.protobuf.Timestamp start_time = 2;
-  google.protobuf.Timestamp end_time = 3;
+  string type = 2;
+  google.protobuf.Timestamp start_time = 3;
+  google.protobuf.Timestamp end_time = 4;
 }
 
 message HistoryResponse {
