@@ -38,7 +38,7 @@ message TransactionRequest {
 
 message TransactionResponse {
   string message = 1;
-  string balance = 2;
+  double balance = 2;
 }
 
 message HistoryRequest {
