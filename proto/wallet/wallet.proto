@@ -50,7 +50,6 @@ message HistoryRequest {
 
 message HistoryResponse {
   repeated Transaction transactions = 1;
-  string message = 2;
 }
 
 message Transaction {

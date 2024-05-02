@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package subscription;
+
+option go_package = "gym.subscription.v1;subv1";
+
+service Subscription {
+  rpc Create (CreateRequest) returns (CreateResponse);
+  rpc UpdateType (UpdateTypeRequest) returns (UpdateTypeResponse);
+  rpc Extend (ExtendRequest) returns (ExtendResponse);
+  rpc GetData (GetDataRequest) returns (GetDataResponse);
+}
+
+message CreateRequest {
+  int64 user_id = 1;
+}
+
+message CreateResponse {
+  string message = 1;
+}
+
+message UpdateTypeRequest {
+  int64 user_id = 1;
+  int64 type = 2;
+}
+
+message UpdateTypeResponse {
+  string message = 1;
+}
+
+message ExtendRequest {
+  int64 user_id = 1;
+  int64 count = 2;
+}
+
+message ExtendResponse {
+  string message = 1;
+}
+
+message GetDataRequest {
+  int64 user_id = 1;
+}
+
+message GetDataResponse {
+  int64 type = 1;
+  google.protobuf.Timestamp start_time = 2;
+  google.protobuf.Timestamp end_time = 3;
+}
