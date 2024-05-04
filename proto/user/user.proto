@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "gym.user.v1;userv1";
+
+service User {
+  rpc Create (CreateRequest) returns (CreateResponse);
+  rpc Profile (ProfileRequest) returns (ProfileResponse);
+  rpc Update (UpdateRequest) returns (UpdateResponse);
+  rpc ChangeSubscriptions (ChangeSubscriptionsRequest) returns (ChangeSubscriptionsResponse);
+  rpc ChangeCurrentGym (ChangeCurrentGymRequest) returns (ChangeCurrentGymResponse);
+}
+
+message CreateRequest {
+  int64 user_id = 1;
+  string username = 2;
+  string phone = 3;
+  string email = 4;
+}
+
+message CreateResponse {
+  string message = 1;
+}
+
+message ProfileRequest {
+  int64 user_id = 1;
+}
+
+message ProfileResponse {
+  string username = 1;
+  string phone = 2;
+  string email = 3;
+  int64 subscription_lvl = 4;
+  int64 current_gym_id = 5;
+}
+
+message UpdateRequest {
+  int64 user_id = 1;
+  string username = 2;
+  string phone = 3;
+  string email = 4;
+}
+
+message UpdateResponse {
+  string message = 1;
+}
+
+message ChangeSubscriptionsRequest {
+  int64 user_id = 1;
+  int64 subscription_lvl = 2;
+}
+
+message ChangeSubscriptionsResponse {
+  string message = 1;
+}
+
+message ChangeCurrentGymRequest {
+  int64 user_id = 1;
+  int64 current_gym_id = 2;
+}
+
+message ChangeCurrentGymResponse {
+  string message = 1;
+}
